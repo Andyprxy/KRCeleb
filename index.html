@@ -14,13 +14,13 @@
         
         /* PALETTE: BLACK TIE + PINK ACCENT */
         :root { 
-            --rose: #ff7096; /* The Accent */
-            --dark: #111111; /* The Luxury Base */
+            --rose: #ff7096; 
+            --dark: #111111; 
         } 
         
-        /* Utility Classes */
         .text-rose { color: var(--rose); }
         .bg-rose { background-color: var(--rose); }
+        .hover-text-rose:hover { color: var(--rose); }
         
         ::selection { background-color: var(--rose); color: white; }
         
@@ -35,7 +35,6 @@
 
         /* ANIMATIONS */
         .hover-lift { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        
         .chat-open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
         .chat-closed { transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; }
         
@@ -57,6 +56,12 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 112, 150, 0); }
         }
         .animate-pulse-ring { animation: pulse-ring 2s infinite; }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        .icon-wiggle { animation: wiggle 1.5s ease-in-out infinite; }
     </style>
 </head>
 <body class="antialiased">
@@ -118,16 +123,12 @@
         <div class="grid md:grid-cols-3 gap-8">
             <div class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px]">
                 <img src="gift.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-1000 group-hover:scale-105">
-                
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
                 
                 <div class="absolute bottom-0 left-0 p-8 w-full translate-y-2 group-hover:translate-y-0 transition duration-500">
                     <h3 class="text-3xl text-white serif italic mb-3">Luxury Gifting</h3>
                     <p class="text-gray-200 text-sm mb-8 leading-relaxed font-light opacity-90">Personalized hampers for Him & Her. Curated boxes for birthdays, corporate, or "just because."</p>
-                    
-                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">
-                        Curate a Box
-                    </button>
+                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">Curate a Box</button>
                 </div>
             </div>
 
@@ -138,10 +139,7 @@
                 <div class="absolute bottom-0 left-0 p-8 w-full translate-y-2 group-hover:translate-y-0 transition duration-500">
                     <h3 class="text-3xl text-white serif italic mb-3">Romantic Setups</h3>
                     <p class="text-gray-200 text-sm mb-8 leading-relaxed font-light opacity-90">Intimate hotel or home styling. Petals, candles, and ambiance creating the perfect proposal.</p>
-                    
-                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">
-                        Plan a Date
-                    </button>
+                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">Plan a Date</button>
                 </div>
             </div>
 
@@ -152,10 +150,7 @@
                 <div class="absolute bottom-0 left-0 p-8 w-full translate-y-2 group-hover:translate-y-0 transition duration-500">
                     <h3 class="text-3xl text-white serif italic mb-3">Events & Decor</h3>
                     <p class="text-gray-200 text-sm mb-8 leading-relaxed font-light opacity-90">High-end balloon garlands, stylish backdrops for girls' nights, showers, and milestone birthdays.</p>
-                    
-                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">
-                        View Options
-                    </button>
+                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">View Options</button>
                 </div>
             </div>
         </div>
@@ -199,57 +194,66 @@
                 <h2 class="text-4xl serif mt-2">Recent Celebrations</h2>
             </div>
             
-            <a href="https://www.tiktok.com/" target="_blank" class="btn-alive flex items-center gap-3 text-sm font-bold text-gray-800 px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
+            <a href="https://www.tiktok.com/@kr.celebrations" target="_blank" class="btn-alive flex items-center gap-3 text-sm font-bold text-gray-800 px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
                 <i class="fab fa-tiktok text-xl icon-wiggle text-black"></i> 
                 Follow our journey
             </a>
         </div>
 
         <div class="columns-2 md:columns-3 gap-4 space-y-4">
-            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative">
-                <img src="gallery1.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105" alt="Gallery 1">
-            </div>
-            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative">
-                <img src="gallery2.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105" alt="Gallery 2">
-            </div>
-            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative">
-                <img src="gallery3.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105" alt="Gallery 3">
-            </div>
-            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative">
-                <img src="gallery4.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105" alt="Gallery 4">
-            </div>
-            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative">
-                <img src="gallery5.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105" alt="Gallery 5">
-            </div>
-             <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative">
-                <img src="gallery6.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105" alt="Gallery 6">
-            </div>
+            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative"><img src="gallery1.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105"></div>
+            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative"><img src="gallery2.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105"></div>
+            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative"><img src="gallery3.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105"></div>
+            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative"><img src="gallery4.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105"></div>
+            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative"><img src="gallery5.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105"></div>
+            <div class="break-inside-avoid rounded-3xl overflow-hidden shadow-sm group relative"><img src="gallery6.jpg" class="w-full h-auto transform transition duration-700 group-hover:scale-105"></div>
         </div>
     </section>
 
-    <footer class="bg-[#111] text-white py-24 rounded-t-[3rem] mt-12 relative overflow-hidden">
+    <footer class="bg-[#111] text-white py-20 rounded-t-[3rem] mt-12 relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/5 rounded-full blur-[120px] pointer-events-none"></div>
         
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-            <div class="mb-8 text-3xl font-serif">
-                KR<span class="italic text-rose">Celebrations</span>
-            </div>
-            <h2 class="serif text-3xl md:text-4xl italic mb-12 text-gray-400 font-light">"Make every occasion a masterpiece."</h2>
-            
-            <div class="flex justify-center gap-6 mb-16">
-                 <a href="https://wa.me/27123456789" class="flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-[#25D366]/30 hover:bg-white hover:text-[#25D366] transition transform hover:-translate-y-1">
-                    <i class="fab fa-whatsapp text-2xl"></i> Chat on WhatsApp
-                </a>
-            </div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+                
+                <div class="flex flex-col items-center md:items-start">
+                    <div class="mb-6 text-3xl font-serif">
+                        KR<span class="italic text-rose">Celebrations</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Premium gifting and event styling services based in 
+                        <span class="text-white font-semibold">Centurion</span>, proudly serving the greater Gauteng area.
+                    </p>
+                    <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-rose">
+                        <i class="fas fa-map-marker-alt"></i> We come to you
+                    </div>
+                </div>
 
-            <div class="flex justify-center gap-8 mb-16">
-                <a href="#" class="text-gray-500 hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram text-3xl"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition transform hover:scale-110"><i class="fab fa-tiktok text-3xl"></i></a>
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-white font-serif text-xl mb-6">Get in Touch</h4>
+                    <div class="space-y-4 text-sm text-gray-400">
+                        <p><i class="fas fa-envelope mr-2 text-gray-600"></i> kgopotsoreality8@gmail.com</p>
+                        <p><i class="fas fa-clock mr-2 text-gray-600"></i> Mon - Fri: 09:00 - 18:00</p>
+                        <p><i class="fas fa-calendar-check mr-2 text-gray-600"></i> Weekends by Appointment</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center md:items-end">
+                    <h4 class="text-white font-serif text-xl mb-6">Follow Us</h4>
+                    <div class="flex gap-4 mb-6">
+                        <a href="https://www.instagram.com/krcelebrations_est2025" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@kr.celebrations" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose hover:text-white transition duration-300">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                    </div>
+                    <a href="https://wa.me/27123456789" class="text-sm border-b border-rose pb-1 hover:text-rose transition">Chat on WhatsApp</a>
+                </div>
             </div>
             
-            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-widest border-t border-white/10 pt-10">
-                <p>Sandton • Pretoria • JHB North</p>
-                <p class="mt-4 md:mt-0">© 2026 KR Celebrations. Automated by Automania.</p>
+            <div class="border-t border-white/10 mt-16 pt-8 text-center">
+                <p class="text-xs text-gray-600 uppercase tracking-widest">© 2026 KR Celebrations. Automated by Automania.</p>
             </div>
         </div>
     </footer>
@@ -273,7 +277,7 @@
             <div class="flex items-start space-x-3">
                 <div class="w-9 h-9 rounded-full bg-rose flex items-center justify-center text-white text-[10px] font-bold shadow-sm shrink-0">KR</div>
                 <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm text-gray-700 border border-gray-100/50 max-w-[90%] leading-relaxed">
-                    Hello! ✨ Welcome to the KR Online Desk. Are you looking for a gift, a romantic setup, or event decor?
+                    Hello! ✨ Welcome to the KR Online Desk. We are based in Centurion but deliver across Gauteng. How can we help you celebrate today?
                 </div>
             </div>
         </div>
@@ -304,6 +308,7 @@
             const message = input.value;
             if (!message) return;
 
+            // 1. Display User Message
             const messagesDiv = document.getElementById('messages');
             messagesDiv.innerHTML += `
                 <div class="flex items-end justify-end space-x-2 animate-fade-in-up">
@@ -312,6 +317,7 @@
             input.value = '';
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
+            // 2. Display Loading Bubble
             const loadingId = 'loading-' + Date.now();
             messagesDiv.innerHTML += `
                 <div id="${loadingId}" class="flex items-start space-x-3">
@@ -322,12 +328,28 @@
                 </div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
+            // 3. Dual Webhook Logic (Prod -> Fallback to Test)
+            const webhookProd = 'https://n8n.automania.cloud/webhook/KR';
+            const webhookTest = 'https://n8n.automania.cloud/webhook-test/KR';
+
             try {
-                await new Promise(r => setTimeout(r, 1500));
-                const aiResponse = "That sounds lovely! We can definitely help you with that. We have packages starting from R850. Would you like to see the catalogue?";
+                // Try PROD first
+                let response = await fetch(webhookProd, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chatInput: message })
+                });
+
+                // If Prod fails, throw error to catch block
+                if (!response.ok) {
+                    throw new Error('Production webhook failed');
+                }
+
+                const data = await response.json();
+                // Check if n8n returned a text field or output field
+                const aiResponse = data.output || data.text || "Thank you for your message. We will be in touch shortly.";
 
                 document.getElementById(loadingId).remove();
-                
                 messagesDiv.innerHTML += `
                     <div class="flex items-start space-x-3">
                         <div class="w-9 h-9 rounded-full bg-rose flex items-center justify-center text-white text-[10px] font-bold shrink-0">KR</div>
@@ -337,15 +359,43 @@
                     </div>`;
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-            } catch (error) {
-                document.getElementById(loadingId).remove();
-                messagesDiv.innerHTML += `
-                <div class="flex items-start space-x-2">
-                    <div class="w-9 h-9 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold">!</div>
-                    <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-red-100 text-red-500 text-xs">
-                        Network error. Please try WhatsApp.
-                    </div>
-                </div>`;
+            } catch (prodError) {
+                console.warn("Production webhook failed, trying Test webhook...", prodError);
+                
+                try {
+                    // Fallback to TEST
+                    const testResponse = await fetch(webhookTest, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chatInput: message })
+                    });
+
+                    if (!testResponse.ok) throw new Error('Test webhook failed');
+
+                    const testData = await testResponse.json();
+                    const aiResponse = testData.output || testData.text || "Message received (Test Mode).";
+
+                    document.getElementById(loadingId).remove();
+                    messagesDiv.innerHTML += `
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-rose flex items-center justify-center text-white text-[10px] font-bold shrink-0">KR</div>
+                            <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-100/50 max-w-[90%] text-gray-700 leading-relaxed">
+                                ${aiResponse}
+                            </div>
+                        </div>`;
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+                } catch (finalError) {
+                    // Both failed
+                    document.getElementById(loadingId).remove();
+                    messagesDiv.innerHTML += `
+                    <div class="flex items-start space-x-2">
+                        <div class="w-9 h-9 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold">!</div>
+                        <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-red-100 text-red-500 text-xs">
+                            System offline. Please contact us on WhatsApp directly.
+                        </div>
+                    </div>`;
+                }
             }
         }
     </script>
