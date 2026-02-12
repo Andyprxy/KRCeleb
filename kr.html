@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KR Celebrations | Luxury Gifting & Decor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f5f2; color: #111; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        
+        /* LUXURY PALETTE */
+        :root { 
+            --gold: #b48e43; 
+            --rose-gold: #c59d95; /* Added a subtle rose hint for the romance vibe */
+        } 
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .text-rose { color: var(--rose-gold); }
+        
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-light {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .hover-lift { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .group:hover .hover-lift { transform: translateY(-5px); }
+        .chat-open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
+        .chat-closed { transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; }
+        .text-shadow-sm { text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+
+        /* ANIMATION: Heartbeat */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        .animate-heartbeat {
+            animation: heartbeat 3s infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#b48e43] selection:text-white">
+
+    <nav class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+        <div class="bg-white/90 backdrop-blur-md rounded-full px-8 py-3 flex justify-between items-center w-full max-w-5xl shadow-xl shadow-black/5 border border-white/50">
+            <div class="flex items-center gap-3">
+                <span class="serif text-2xl font-bold tracking-tighter">KR<span class="text-gold italic">Celebrations</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center text-sm font-medium text-gray-500">
+                <a href="#collections" class="hover:text-black transition duration-300">Gifting</a>
+                <a href="#decor" class="hover:text-black transition duration-300">Decor</a>
+                <a href="#about" class="hover:text-black transition duration-300">Experience</a>
+            </div>
+            <a href="https://wa.me/27123456789" class="bg-black text-white px-6 py-2.5 rounded-full text-xs font-semibold tracking-wide hover:bg-gold transition shadow-lg hover:shadow-xl transform active:scale-95 duration-300 flex items-center gap-2">
+                <i class="fab fa-whatsapp"></i> Enquire Now
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative h-[95vh] w-full overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=2040&auto=format&fit=crop" class="w-full h-full object-cover opacity-90 object-center">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/90"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <div class="inline-block bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full mb-6 border border-white/40 shadow-sm animate-fade-in-up">
+                <span class="text-xs font-bold tracking-widest uppercase text-gray-800">Based in Gauteng • Delivering Love</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-medium mb-8 text-gray-900 leading-[0.9] tracking-tight drop-shadow-sm">
+                Unbox <span class="italic text-gold text-shadow-sm font-semibold">Emotion.</span><br>
+                Celebrate <span class="italic text-black font-thin">Life.</span>
+            </h1>
+            
+            <p class="text-gray-800 text-lg mb-10 font-light max-w-lg mx-auto leading-relaxed bg-white/60 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-white/20">
+                Bespoke gift boxes, intimate romantic setups, and luxury balloon decor. We turn ordinary days into core memories.
+            </p>
+            <div class="flex justify-center gap-6 items-center">
+                <button onclick="toggleChat()" class="animate-heartbeat bg-black text-white px-10 py-4 rounded-full text-sm font-bold tracking-wide hover:bg-gray-800 transition shadow-2xl border border-black">
+                    Start Planning <span class="ml-2 inline-block w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                
+                <a href="#collections" class="bg-white text-black px-10 py-4 rounded-full text-sm font-bold tracking-wide hover:bg-gray-50 transition shadow-lg transform hover:-translate-y-1 flex items-center gap-2 border border-white">
+                    View Catalog
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="collections" class="py-24 px-6 max-w-7xl mx-auto relative">
+        <div class="absolute top-0 left-0 w-32 h-1.5 bg-gold/80 ml-6 md:ml-0 rounded-r-full"></div>
+
+        <div class="text-center mb-16 pt-8">
+            <h2 class="text-4xl serif mb-4 text-gray-900">Curated Collections</h2>
+            <p class="text-gray-500 font-light">Choose your love language</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px] transition-all duration-500 hover:shadow-xl border border-white">
+                <img src="https://images.unsplash.com/photo-1589363462143-559d1df5258e?q=80&w=1974&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="glass-dark p-6 rounded-[2rem] backdrop-blur-xl border border-white/10 transform transition duration-500 group-hover:-translate-y-2">
+                        <h3 class="text-2xl text-white serif italic mb-2">Luxury Gifting</h3>
+                        <p class="text-gray-300 text-xs mb-4 leading-relaxed">Personalized hampers for Him & Her. From care packages to Valentine's masterpieces.</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">For Him</span>
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">For Her</span>
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Corporate</span>
+                        </div>
+                        <button onclick="toggleChat()" class="w-full bg-white text-black py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition">Build a Box</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="decor" class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px] transition-all duration-500 hover:shadow-xl border border-white">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover object-center transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="glass-dark p-6 rounded-[2rem] backdrop-blur-xl border border-white/10 transform transition duration-500 group-hover:-translate-y-2">
+                        <h3 class="text-2xl text-white serif italic mb-2">Romantic Setups</h3>
+                        <p class="text-gray-300 text-xs mb-4 leading-relaxed">Intimate hotel or home styling. We create the atmosphere, you create the memory.</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Proposals</span>
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Anniversaries</span>
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Dates</span>
+                        </div>
+                        <button onclick="toggleChat()" class="w-full bg-white text-black py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition">Book a Date</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px] transition-all duration-500 hover:shadow-xl border border-white">
+                <img src="https://images.unsplash.com/photo-1530103862676-de3c9a59af57?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-6 w-full">
+                    <div class="glass-dark p-6 rounded-[2rem] backdrop-blur-xl border border-white/10 transform transition duration-500 group-hover:-translate-y-2">
+                        <h3 class="text-2xl text-white serif italic mb-2">Events & Balloons</h3>
+                        <p class="text-gray-300 text-xs mb-4 leading-relaxed">High-end balloon garlands, girls' night backdrops, and birthday styling.</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Girls Night</span>
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Birthdays</span>
+                            <span class="text-[10px] uppercase bg-white/10 text-white px-2 py-1 rounded">Showers</span>
+                        </div>
+                        <button onclick="toggleChat()" class="w-full bg-white text-black py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition">View Options</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-1.5 bg-gold/80 mr-6 md:mr-0 rounded-l-full"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10 pt-8">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1607344645866-009c320c5abc?q=80&w=2070&auto=format&fit=crop" class="w-full rounded-[2.5rem] shadow-2xl shadow-gray-200 object-cover h-[600px] transition duration-700 group-hover:scale-[1.02]">
+                        <div class="absolute -bottom-8 -right-8 bg-white/80 backdrop-blur-xl p-6 rounded-[2rem] shadow-xl max-w-xs animate-bounce border border-white/50" style="animation-duration: 3s;">
+                            <p class="text-sm font-bold text-gray-800">"We don't just send gifts. We deliver feelings."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <span class="text-gold text-xs font-bold tracking-[0.2em] uppercase bg-gold/10 px-3 py-1 rounded-full">The KR Standard</span>
+                    <h2 class="text-5xl serif mt-6 mb-8 leading-tight text-gray-900">Love is in the <br><span class="italic text-gray-400">Details.</span></h2>
+                    <div class="space-y-6 text-gray-600 font-light leading-relaxed text-lg">
+                        <p>At KR Celebrations, we understand that a gift is a representation of your heart. Whether it's a "Just Because" box or a grand proposal setup, we execute with precision and passion.</p>
+                        <p>We source premium products—from gourmet chocolates to high-end self-care items—packaging them in our signature luxury style.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-10">
+                        <div class="bg-gray-50 p-4 rounded-3xl border border-gray-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-gold"><i class="fas fa-heart"></i></div>
+                            <p class="text-sm font-medium text-gray-900">Custom Curation</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-3xl border border-gray-100 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-gold"><i class="fas fa-truck"></i></div>
+                            <p class="text-sm font-medium text-gray-900">Gauteng Delivery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto relative">
+        <div class="absolute top-0 left-0 w-32 h-1.5 bg-gold/80 ml-6 md:ml-0 rounded-r-full"></div>
+
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 pt-8">
+            <div>
+                <span class="text-gold text-xs font-bold tracking-[0.2em] uppercase">Portfolio</span>
+                <h2 class="text-4xl serif mt-2">Recent Celebrations</h2>
+            </div>
+            <a href="https://www.tiktok.com/" target="_blank" class="hidden md:flex items-center gap-2 text-sm font-medium hover:text-gold transition bg-white px-6 py-3 rounded-full shadow-sm border border-gray-100">
+                Follow on TikTok <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[300px]">
+            <div class="col-span-2 row-span-2 rounded-[2rem] overflow-hidden relative group shadow-lg">
+                <img src="https://images.unsplash.com/photo-1543258103-a62bdc069871?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
+                <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl">
+                    <p class="text-xs font-bold">Valentine's Collection</p>
+                </div>
+            </div>
+            
+            <div class="rounded-[2rem] overflow-hidden relative group shadow-lg">
+                <img src="https://images.unsplash.com/photo-1577041239881-4340d2139048?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+            </div>
+            <div class="rounded-[2rem] overflow-hidden relative group shadow-lg">
+                <img src="https://images.unsplash.com/photo-1596483568930-b4df4990d099?q=80&w=2037&auto=format&fit=crop" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+            </div>
+            <div class="col-span-2 rounded-[2rem] overflow-hidden relative group shadow-lg">
+                <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?q=80&w=2083&auto=format&fit=crop" class="w-full h-full object-cover object-center transition duration-700 group-hover:scale-105">
+                <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl">
+                    <p class="text-xs font-bold">Intimate Decor Setups</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center md:hidden">
+            <a href="https://www.tiktok.com/" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium bg-black text-white px-8 py-3 rounded-full shadow-lg">
+                View on TikTok <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-[#050505] text-white py-20 rounded-t-[3rem] mt-12 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="mb-10 text-3xl font-serif">
+                KR<span class="italic text-gold">Celebrations</span>
+            </div>
+            <h2 class="serif text-3xl md:text-4xl italic mb-10 text-gray-200">"Make every occasion a masterpiece."</h2>
+            
+            <div class="flex justify-center gap-6 mb-12">
+                 <a href="https://wa.me/27123456789" class="flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-[#25D366]/50 transition transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-2xl"></i> Start Your Order
+                </a>
+            </div>
+
+            <div class="flex justify-center gap-6 mb-16 opacity-70">
+                <a href="#" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-gold hover:text-black transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 border border-gray-700 rounded-full flex items-center justify-center hover:bg-gold hover:text-black transition"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 uppercase tracking-widest border-t border-white/10 pt-8">
+                <p>Sandton • Pretoria • JHB North</p>
+                <p class="mt-4 md:mt-0">© 2026 KR Celebrations. Automated by Automania.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button onclick="toggleChat()" class="fixed bottom-8 right-8 z-50 bg-black text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition duration-300 group ring-4 ring-white/20">
+        <i class="fas fa-gift text-xl group-hover:hidden text-gold"></i>
+        <i class="fas fa-times text-xl hidden group-hover:block text-gold"></i>
+    </button>
+    <div id="chat-window" class="fixed bottom-28 right-8 w-80 bg-white rounded-3xl shadow-2xl z-50 border border-gray-100 transition-all duration-300 chat-closed flex flex-col h-[450px] overflow-hidden ring-1 ring-black/5">
+        <div class="bg-black/95 backdrop-blur-md text-white p-5 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
+                <span class="font-bold tracking-wide text-xs uppercase">KR Assistant</span>
+            </div>
+        </div>
+        <div id="messages" class="flex-1 p-5 overflow-y-auto bg-gray-50/50 space-y-4 text-xs">
+            <div class="flex items-start space-x-2">
+                <div class="w-8 h-8 rounded-full bg-gold flex items-center justify-center text-white text-[10px] font-bold shadow-sm">K</div>
+                <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm text-gray-600 border border-gray-100 max-w-[90%] leading-relaxed">
+                    Welcome to KR Celebrations! 🎁 Are you looking for a gift box, a romantic setup, or balloons?
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-white border-t border-gray-100">
+            <form id="chat-form" onsubmit="sendMessage(event)" class="relative">
+                <input type="text" id="user-input" placeholder="Type here..." class="w-full bg-gray-100 rounded-full pl-5 pr-12 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-gold/50 transition-all">
+                <button type="submit" class="absolute right-2 top-1.5 bg-black text-gold w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-800 transition"><i class="fas fa-arrow-up text-xs"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            if (chatWindow.classList.contains('chat-closed')) {
+                chatWindow.classList.remove('chat-closed');
+                chatWindow.classList.add('chat-open');
+            } else {
+                chatWindow.classList.remove('chat-open');
+                chatWindow.classList.add('chat-closed');
+            }
+        }
+
+        async function sendMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('user-input');
+            const message = input.value;
+            if (!message) return;
+
+            // 1. Show User Message
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `
+                <div class="flex items-end justify-end space-x-2 animate-fade-in-up">
+                    <div class="bg-black text-white p-3.5 rounded-2xl rounded-tr-none shadow-md max-w-[90%]">${message}</div>
+                </div>`;
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // 2. Show Loading Spinner
+            const loadingId = 'loading-' + Date.now();
+            messagesDiv.innerHTML += `
+                <div id="${loadingId}" class="flex items-start space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-gold flex items-center justify-center text-white text-[10px] font-bold">K</div>
+                    <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-gray-100">
+                        <i class="fas fa-circle-notch animate-spin text-gray-400"></i>
+                    </div>
+                </div>`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // 3. Webhook Integration (Replace URLs with your actual Automania n8n hooks)
+            const webhookProd = 'https://n8n.automania.cloud/webhook/KRBot'; 
+            
+            try {
+                // Mock response for preview purposes (Remove this block when connecting real n8n)
+                /* const response = await fetch(webhookProd, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chatInput: message })
+                });
+                */
+               
+               // SIMULATED DELAY FOR DEMO
+               await new Promise(r => setTimeout(r, 1500));
+               const aiResponse = "I can definitely help with that! We have a 'Red Romance' package starting at R850. Would you like to see what's inside?";
+               // END SIMULATION
+
+                // Remove loading
+                document.getElementById(loadingId).remove();
+                
+                messagesDiv.innerHTML += `
+                    <div class="flex items-start space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-gold flex items-center justify-center text-white text-[10px] font-bold">K</div>
+                        <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 max-w-[90%] text-gray-600 leading-relaxed">
+                            ${aiResponse}
+                        </div>
+                    </div>`;
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            } catch (error) {
+                document.getElementById(loadingId).remove();
+                messagesDiv.innerHTML += `
+                <div class="flex items-start space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white text-[10px] font-bold">!</div>
+                    <div class="bg-white p-3.5 rounded-2xl rounded-tl-none shadow-sm border border-red-100 text-red-500 text-xs">
+                        Connection error. Please try WhatsApp.
+                    </div>
+                </div>`;
+            }
+        }
+    </script>
+</body>
+</html>
