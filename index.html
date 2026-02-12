@@ -14,10 +14,11 @@
         
         /* PALETTE: BLACK TIE + PINK ACCENT */
         :root { 
-            --rose: #ff7096; 
-            --dark: #111111; 
+            --rose: #ff7096; /* The Accent */
+            --dark: #111111; /* The Luxury Base */
         } 
         
+        /* Utility Classes */
         .text-rose { color: var(--rose); }
         .bg-rose { background-color: var(--rose); }
         .hover-text-rose:hover { color: var(--rose); }
@@ -35,6 +36,7 @@
 
         /* ANIMATIONS */
         .hover-lift { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
         .chat-open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
         .chat-closed { transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; }
         
@@ -56,7 +58,7 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 112, 150, 0); }
         }
         .animate-pulse-ring { animation: pulse-ring 2s infinite; }
-        
+
         @keyframes wiggle {
             0%, 100% { transform: rotate(-5deg); }
             50% { transform: rotate(5deg); }
@@ -308,7 +310,14 @@
             const message = input.value;
             if (!message) return;
 
-            // 1. Display User Message
+            // --- 1. GENERATE SESSION ID (Fixes n8n Memory Error) ---
+            let sessionId = localStorage.getItem('kr_session_id');
+            if (!sessionId) {
+                sessionId = 'session_' + Math.random().toString(36).substring(2, 15);
+                localStorage.setItem('kr_session_id', sessionId);
+            }
+
+            // --- 2. DISPLAY USER MESSAGE ---
             const messagesDiv = document.getElementById('messages');
             messagesDiv.innerHTML += `
                 <div class="flex items-end justify-end space-x-2 animate-fade-in-up">
@@ -317,7 +326,7 @@
             input.value = '';
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-            // 2. Display Loading Bubble
+            // --- 3. DISPLAY LOADING BUBBLE ---
             const loadingId = 'loading-' + Date.now();
             messagesDiv.innerHTML += `
                 <div id="${loadingId}" class="flex items-start space-x-3">
@@ -328,7 +337,7 @@
                 </div>`;
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-            // 3. Dual Webhook Logic (Prod -> Fallback to Test)
+            // --- 4. DUAL WEBHOOK LOGIC (Prod -> Fallback to Test) ---
             const webhookProd = 'https://n8n.automania.cloud/webhook/KR';
             const webhookTest = 'https://n8n.automania.cloud/webhook-test/KR';
 
@@ -337,16 +346,16 @@
                 let response = await fetch(webhookProd, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chatInput: message })
+                    body: JSON.stringify({ 
+                        chatInput: message,
+                        sessionId: sessionId // Send Session ID
+                    })
                 });
 
                 // If Prod fails, throw error to catch block
-                if (!response.ok) {
-                    throw new Error('Production webhook failed');
-                }
+                if (!response.ok) throw new Error('Production webhook failed');
 
                 const data = await response.json();
-                // Check if n8n returned a text field or output field
                 const aiResponse = data.output || data.text || "Thank you for your message. We will be in touch shortly.";
 
                 document.getElementById(loadingId).remove();
@@ -360,14 +369,17 @@
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
             } catch (prodError) {
-                console.warn("Production webhook failed, trying Test webhook...", prodError);
+                console.warn("Production webhook failed, trying Test webhook...");
                 
                 try {
                     // Fallback to TEST
                     const testResponse = await fetch(webhookTest, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ chatInput: message })
+                        body: JSON.stringify({ 
+                            chatInput: message,
+                            sessionId: sessionId 
+                        })
                     });
 
                     if (!testResponse.ok) throw new Error('Test webhook failed');
