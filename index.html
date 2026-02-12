@@ -12,21 +12,21 @@
         body { font-family: 'Inter', sans-serif; background-color: #fcfbf9; color: #2a2a2a; }
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
         
-        /* NEW VIBRANT PALETTE */
+        /* NEW "SOFT LUXE PINK" PALETTE */
         :root { 
-            --rose: #ff2a68; /* BRIGHT, ELECTRIC ROSE */
-            --rose-hover: #e01b55;
+            --rose: #ff7096; /* The perfect middle ground: Pink, not Red. Bright, not dry. */
+            --rose-light: #ffebf0;
+            --rose-hover: #e85d82;
             --dark: #1a1a1a;
         } 
         
-        /* Utility Classes using the new variables */
+        /* Utility Classes */
         .text-rose { color: var(--rose); }
         .bg-rose { background-color: var(--rose); }
         .hover-bg-rose:hover { background-color: var(--rose); }
         .hover-text-rose:hover { color: var(--rose); }
         .border-rose { border-color: var(--rose); }
         
-        /* Selection color to match brand */
         ::selection { background-color: var(--rose); color: white; }
         
         /* GLASS EFFECTS */
@@ -52,18 +52,39 @@
         .chat-open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
         .chat-closed { transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; }
         
-        /* PULSE ANIMATION FOR CHAT BUTTON */
-        @keyframes pulse-ring {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 42, 104, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(255, 42, 104, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 42, 104, 0); }
+        /* "ALIVE" BUTTON ANIMATION */
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .animate-pulse-ring {
+        .btn-alive {
+            background: linear-gradient(45deg, #ffffff, #ffe4e9, #ffffff);
+            background-size: 200% 200%;
+            animation: shine 3s ease infinite;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--rose);
+        }
+        .btn-alive::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,112,150,0.1) 0%, rgba(0,0,0,0) 70%);
             animation: pulse-ring 2s infinite;
         }
-        
-        /* TEXT POP ANIMATION */
-        .pop-text { text-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .icon-wiggle { animation: wiggle 1s ease-in-out infinite; }
+
+        /* TEXT POP */
+        .pop-text { text-shadow: 2px 2px 0px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body class="antialiased">
@@ -202,8 +223,10 @@
                 <span class="text-rose text-xs font-bold tracking-[0.2em] uppercase">Visual Diary</span>
                 <h2 class="text-4xl serif mt-2">Recent Celebrations</h2>
             </div>
-            <a href="https://www.tiktok.com/" target="_blank" class="flex items-center gap-2 text-sm font-bold hover:text-rose transition bg-white px-8 py-4 rounded-full shadow-sm border border-gray-200 group">
-                <i class="fab fa-tiktok text-xl group-hover:text-rose transition"></i> Follow our journey
+            
+            <a href="https://www.tiktok.com/" target="_blank" class="btn-alive flex items-center gap-3 text-sm font-bold text-gray-800 px-8 py-4 rounded-full shadow-lg hover:shadow-rose/20 hover:text-rose transition transform hover:-translate-y-1">
+                <i class="fab fa-tiktok text-xl icon-wiggle text-rose"></i> 
+                Follow our journey
             </a>
         </div>
 
@@ -257,7 +280,7 @@
         </div>
     </footer>
 
-    <button onclick="toggleChat()" class="fixed bottom-8 right-8 z-50 bg-rose text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-105 transition duration-300 group ring-4 ring-rose/20 animate-pulse-ring">
+    <button onclick="toggleChat()" class="fixed bottom-8 right-8 z-50 bg-rose text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-105 transition duration-300 group ring-4 ring-rose/20 animate-bounce" style="animation-duration: 3s;">
         <i class="fas fa-comment-dots text-xl"></i>
         <span class="font-bold tracking-wide text-sm">Chat Live</span>
     </button>
