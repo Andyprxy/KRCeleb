@@ -16,24 +16,15 @@
         :root { 
             --rose: #ff7096; /* The Accent */
             --dark: #111111; /* The Luxury Base */
-            --gold: #b48e43; /* Subtle secondary accent */
         } 
         
         /* Utility Classes */
         .text-rose { color: var(--rose); }
         .bg-rose { background-color: var(--rose); }
-        .bg-dark { background-color: var(--dark); }
         
         ::selection { background-color: var(--rose); color: white; }
         
         /* GLASS EFFECTS */
-        .glass-dark {
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
         .glass-light {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
@@ -42,14 +33,12 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
         }
 
+        /* ANIMATIONS */
         .hover-lift { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .group:hover .hover-lift { transform: translateY(-5px); }
         
-        /* CHATBOT ANIMATION */
         .chat-open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
         .chat-closed { transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; }
         
-        /* ALIVE BUTTON ANIMATION (Kept for TikTok) */
         @keyframes shine {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -62,13 +51,6 @@
             border: 1px solid #eee;
         }
 
-        @keyframes wiggle {
-            0%, 100% { transform: rotate(-5deg); }
-            50% { transform: rotate(5deg); }
-        }
-        .icon-wiggle { animation: wiggle 1.5s ease-in-out infinite; }
-        
-        /* SUBTLE PULSE FOR ONLINE DESK */
         @keyframes pulse-ring {
             0% { box-shadow: 0 0 0 0 rgba(255, 112, 150, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(255, 112, 150, 0); }
@@ -135,38 +117,45 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             <div class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px]">
-                <img src="gift.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 p-8 w-full">
-                    <div class="glass-dark p-8 rounded-[2rem] backdrop-blur-xl border-white/10 transform transition duration-500 group-hover:-translate-y-4">
-                        <h3 class="text-3xl text-white serif italic mb-3">Luxury Gifting</h3>
-                        <p class="text-gray-200 text-sm mb-6 leading-relaxed font-light">Personalized hampers for Him & Her. Curated boxes for birthdays, corporate, or "just because."</p>
-                        <button onclick="toggleChat()" class="w-full bg-rose text-white py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-rose transition shadow-lg">Curate a Box</button>
-                    </div>
+                <img src="gift.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
+                
+                <div class="absolute bottom-0 left-0 p-8 w-full translate-y-2 group-hover:translate-y-0 transition duration-500">
+                    <h3 class="text-3xl text-white serif italic mb-3">Luxury Gifting</h3>
+                    <p class="text-gray-200 text-sm mb-8 leading-relaxed font-light opacity-90">Personalized hampers for Him & Her. Curated boxes for birthdays, corporate, or "just because."</p>
+                    
+                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">
+                        Curate a Box
+                    </button>
                 </div>
             </div>
 
             <div class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px]">
-                <img src="romance.jpg" class="absolute inset-0 w-full h-full object-cover object-center transition duration-700 group-hover:scale-110 group-hover:rotate-1">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 p-8 w-full">
-                    <div class="glass-dark p-8 rounded-[2rem] backdrop-blur-xl border-white/10 transform transition duration-500 group-hover:-translate-y-4">
-                        <h3 class="text-3xl text-white serif italic mb-3">Romantic Setups</h3>
-                        <p class="text-gray-200 text-sm mb-6 leading-relaxed font-light">Intimate hotel or home styling. Petals, candles, and ambiance creating the perfect proposal.</p>
-                        <button onclick="toggleChat()" class="w-full bg-rose text-white py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-rose transition shadow-lg">Plan a Date</button>
-                    </div>
+                <img src="romance.jpg" class="absolute inset-0 w-full h-full object-cover object-center transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
+                
+                <div class="absolute bottom-0 left-0 p-8 w-full translate-y-2 group-hover:translate-y-0 transition duration-500">
+                    <h3 class="text-3xl text-white serif italic mb-3">Romantic Setups</h3>
+                    <p class="text-gray-200 text-sm mb-8 leading-relaxed font-light opacity-90">Intimate hotel or home styling. Petals, candles, and ambiance creating the perfect proposal.</p>
+                    
+                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">
+                        Plan a Date
+                    </button>
                 </div>
             </div>
 
             <div class="group relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-gray-200 cursor-pointer h-[550px]">
-                <img src="balloon.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 p-8 w-full">
-                    <div class="glass-dark p-8 rounded-[2rem] backdrop-blur-xl border-white/10 transform transition duration-500 group-hover:-translate-y-4">
-                        <h3 class="text-3xl text-white serif italic mb-3">Events & Decor</h3>
-                        <p class="text-gray-200 text-sm mb-6 leading-relaxed font-light">High-end balloon garlands, stylish backdrops for girls' nights, showers, and milestone birthdays.</p>
-                        <button onclick="toggleChat()" class="w-full bg-rose text-white py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-rose transition shadow-lg">View Options</button>
-                    </div>
+                <img src="balloon.jpg" class="absolute inset-0 w-full h-full object-cover transition duration-1000 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition duration-500"></div>
+                
+                <div class="absolute bottom-0 left-0 p-8 w-full translate-y-2 group-hover:translate-y-0 transition duration-500">
+                    <h3 class="text-3xl text-white serif italic mb-3">Events & Decor</h3>
+                    <p class="text-gray-200 text-sm mb-8 leading-relaxed font-light opacity-90">High-end balloon garlands, stylish backdrops for girls' nights, showers, and milestone birthdays.</p>
+                    
+                    <button onclick="toggleChat()" class="w-full bg-white text-black py-4 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose hover:text-white transition shadow-lg border border-white">
+                        View Options
+                    </button>
                 </div>
             </div>
         </div>
@@ -181,7 +170,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 order-1 md:order-2">
-                    <span class="text-gold text-xs font-bold tracking-[0.2em] uppercase bg-orange-50 px-4 py-2 rounded-full">The KR Standard</span>
+                    <span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase bg-gray-50 px-4 py-2 rounded-full">The KR Standard</span>
                     <h2 class="text-5xl serif mt-8 mb-8 leading-tight text-gray-900">Love is in the <br><span class="italic text-rose">Details.</span></h2>
                     <div class="space-y-6 text-gray-600 font-light leading-relaxed text-lg">
                         <p>At KR Celebrations, we believe a gift isn't just an item; it's a feeling made tangible. We take the stress out of planning so you can focus on the moment.</p>
@@ -271,7 +260,6 @@
     </button>
     
     <div id="chat-window" class="fixed bottom-24 right-4 md:right-8 w-[90vw] md:w-[360px] bg-white rounded-[2rem] shadow-2xl z-50 border border-gray-100 transition-all duration-300 chat-closed flex flex-col h-[520px] overflow-hidden ring-1 ring-black/5">
-        
         <div class="bg-rose text-white p-6 flex items-center justify-between relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-md"></div>
             <div class="flex items-center space-x-3 relative z-10">
@@ -316,7 +304,6 @@
             const message = input.value;
             if (!message) return;
 
-            // 1. Show User Message
             const messagesDiv = document.getElementById('messages');
             messagesDiv.innerHTML += `
                 <div class="flex items-end justify-end space-x-2 animate-fade-in-up">
@@ -325,7 +312,6 @@
             input.value = '';
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
-            // 2. Show Loading Spinner
             const loadingId = 'loading-' + Date.now();
             messagesDiv.innerHTML += `
                 <div id="${loadingId}" class="flex items-start space-x-3">
@@ -337,7 +323,6 @@
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
             try {
-                // SIMULATED RESPONSE
                 await new Promise(r => setTimeout(r, 1500));
                 const aiResponse = "That sounds lovely! We can definitely help you with that. We have packages starting from R850. Would you like to see the catalogue?";
 
